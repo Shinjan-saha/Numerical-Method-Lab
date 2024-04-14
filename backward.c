@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <conio.h>
-#include <math.h>
 
 int main() {
     float x[20], y[20], f, s, h, p,d;
-    int i, j, n;
+    int i, j,k, n;
 
     printf("Enter the number of elements (n): ");
     scanf("%d", &n);
@@ -25,17 +24,17 @@ int main() {
     scanf("%f", &f);
 
    
-    s = (f - x[1]) / h;
+    s = (f - x[n]) / h;
     p=1;
-    d = y[1];
+    d = y[n];
 
-    for (i = 1; i <= (n-1); i++) {
-       
-        for (j = 0; j <(n- i); j++) {
-            y[j]= y[j + 1] - y[j];
+    for (k = 1; k <=n; k++) {
+        
+        for (j = n; j >= 1; j--) {
+            y[j]=  y[j]- y[j - 1] ;
         }
-       p=p*(s-i+1)/i;
-        d = d + p * y[1];
+       p=p*(s+k-1)/k;
+        d = d + p * y[n];
     }
 
     printf("Interpolated value at x = %f is %f\n", f, d);

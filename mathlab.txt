@@ -1,0 +1,30 @@
+% absolute error
+tval=pi;
+approax=3.14;
+fabs=abs(tval-approax);
+Erel=fabs/tval;
+PErel=Erel*100;
+
+%rounding error
+s=0;
+for i= 1:1000
+s=s-0.001;
+
+end
+format  short
+
+%trunctation error
+syms x;
+f=sin(x)/x;
+explot(f);
+grid on
+xlabel("time")
+ylabel("amplitude")
+hold on 
+
+T4=taylor(f,x,'order',4)
+explot(T4)
+hold on
+T6=taylor(f,x,'order',6)
+explot(T6)
+legend("actual","Fourth Series","Sixth Series")
